@@ -42,8 +42,8 @@ T = 8;
 
 %% 4. Get observer gains for L2 observer
 H0_pinv = pinv(H0,0.001);
-Ly = A_bar_d.'*H0_pinv;
-Lu = F-A_bar_d.'*H0_pinv*H1;
+Ly = mpower(A_bar_d,T)*H0_pinv;
+Lu = F-mpower(A_bar_d,T)*H0_pinv*H1;
 
 % residual
 H0_perp = eye(size(H0,1)) - H0*H0_pinv;
